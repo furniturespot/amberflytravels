@@ -1,0 +1,1699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AmberFly Travel - Luxury Travel Experiences from Hounslow</title>
+    <meta name="description" content="AmberFly Travel offers bespoke travel packages from Hounslow, UK. Explore our luxury destinations with expert itineraries.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FF7D33',
+                        secondary: '#1E3A8A',
+                        accent: '#10B981',
+                        dark: '#1F2937',
+                        light: '#F3F4F6'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .hero-bg {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1506929562872-bb421503ef21?ixlib=rb-4.0.3');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        
+        .package-card {
+            transition: all 0.3s ease;
+        }
+        
+        .package-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: white;
+            z-index: 1000;
+            overflow-y: auto;
+        }
+        
+        .modal-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .modal-image {
+            height: 400px;
+            object-fit: cover;
+        }
+        
+        .image-carousel {
+            scroll-snap-type: x mandatory;
+        }
+        
+        .carousel-image {
+            scroll-snap-align: start;
+            flex: 0 0 100%;
+        }
+        
+        /* Mobile menu */
+        .mobile-menu {
+            transition: all 0.3s ease;
+            max-height: 0;
+            overflow: hidden;
+        }
+        
+        .mobile-menu.open {
+            max-height: 500px;
+        }
+        
+        /* Loading animation */
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .loading-spinner {
+            animation: spin 1s linear infinite;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white font-bold text-xl mr-2">AF</div>
+                <a href="#" class="text-2xl font-bold text-secondary">AmberFly <span class="text-primary">Travel</span></a>
+            </div>
+            
+            <div class="hidden md:flex space-x-8">
+                <a href="#" class="text-dark hover:text-primary font-medium">Home</a>
+                <a href="#" class="text-dark hover:text-primary font-medium">Flights</a>
+                <a href="#" class="text-dark hover:text-primary font-medium">Hotels</a>
+                <a href="#toursworldwide" class="text-dark hover:text-primary font-medium">Tours Worldwide</a>
+                <a href="#tourstouk" class="text-dark hover:text-primary font-medium">Tours to UK</a>
+                <a href="#" class="text-dark hover:text-primary font-medium">Experiences</a>
+                <a href="#contactus" class="text-dark hover:text-primary font-medium">Contact</a>
+            </div>
+            
+            <div class="hidden md:block">
+                <a href="tel:+447545453460" class="bg-primary hover:bg-orange-600 text-white px-4 py-2 rounded-full font-medium transition duration-300">
+                    <i class="fas fa-phone-alt mr-2"></i> Call Us
+                </a>
+            </div>
+            
+            <button id="mobile-menu-button" class="md:hidden text-dark">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="mobile-menu md:hidden bg-white px-4">
+            <div class="flex flex-col space-y-4 py-4">
+                <a href="#" class="text-dark hover:text-primary font-medium">Home</a>
+                <a href="#" class="text-dark hover:text-primary font-medium">Flights</a>
+                <a href="#" class="text-dark hover:text-primary font-medium">Hotels</a>
+                <a href="#toursworldwide" class="text-dark hover:text-primary font-medium">Tours Worldwide</a>
+                <a href="#tourstouk" class="text-dark hover:text-primary font-medium">Tours to UK</a>
+                <a href="#" class="text-dark hover:text-primary font-medium">Experiences</a>
+                <a href="#contactus" class="text-dark hover:text-primary font-medium">Contact</a>
+                <a href="tel:+447545453460" class="bg-primary hover:bg-orange-600 text-white px-4 py-2 rounded-full font-medium text-center transition duration-300">
+                    <i class="fas fa-phone-alt mr-2"></i> Call Us
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-bg text-white py-20 md:py-32">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6">Discover Your Next Adventure</h1>
+            <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">Bespoke travel experiences crafted with care from Hounslow to the world</p>
+            
+            <div class="max-w-4xl mx-auto bg-white bg-opacity-20 backdrop-filter backdrop-blur-sm rounded-xl p-6">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="relative">
+                        <select class="w-full p-3 rounded-lg bg-white bg-opacity-90 text-dark">
+                            <option value="">Destination</option>
+                            <option value="bali">Bali, Indonesia</option>
+                            <option value="santorini">Santorini, Greece</option>
+                            <option value="maldives">Maldives</option>
+                            <option value="paris">Paris, France</option>
+                        </select>
+                    </div>
+                    <div class="relative">
+                        <input type="date" class="w-full p-3 rounded-lg bg-white bg-opacity-90 text-dark">
+                    </div>
+                    <button class="bg-primary hover:bg-orange-600 text-white font-bold py-3 px-6 rounded-lg transition duration-300">
+                        Search Packages <i class="fas fa-search ml-2"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+<br><br><br>
+
+    <!-- TOURS WORLDWIDE-->
+    <section class="toursworldwide" id="toursworldwide">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-secondary mb-4">TOURS WORLDWIDE</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Handpicked experiences that combine luxury, adventure, and cultural immersion</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Package 1 -->
+                <div class="package-card bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?ixlib=rb-4.0.3" alt="Bali, Indonesia" class="w-full h-64 object-cover">
+                        <div class="absolute top-4 right-4 bg-primary text-white px-3 py-1 rounded-full text-sm font-medium">7 Days</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-secondary mb-2">Bali Bliss Retreat</h3>
+                        <p class="text-gray-600 mb-4">Experience the magic of Bali with our luxury wellness retreat package</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-primary font-bold text-xl">£1,299</span>
+                            <button onclick="openModal('bali')" class="bg-secondary hover:bg-blue-900 text-white px-4 py-2 rounded-lg transition duration-300">
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Package 2 -->
+                <div class="package-card bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?ixlib=rb-4.0.3" alt="Santorini, Greece" class="w-full h-64 object-cover">
+                        <div class="absolute top-4 right-4 bg-primary text-white px-3 py-1 rounded-full text-sm font-medium">5 Days</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-secondary mb-2">Santorini Sunset Escape</h3>
+                        <p class="text-gray-600 mb-4">Romantic getaway to the iconic white-washed villages of Santorini</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-primary font-bold text-xl">£1,599</span>
+                            <button onclick="openModal('santorini')" class="bg-secondary hover:bg-blue-900 text-white px-4 py-2 rounded-lg transition duration-300">
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Package 3 -->
+                <div class="package-card bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1578932750355-5eb30ece487a?ixlib=rb-4.0.3" alt="Maldives" class="w-full h-64 object-cover">
+                        <div class="absolute top-4 right-4 bg-primary text-white px-3 py-1 rounded-full text-sm font-medium">10 Days</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-secondary mb-2">Maldives Paradise</h3>
+                        <p class="text-gray-600 mb-4">Ultimate luxury in overwater bungalows with crystal clear waters</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-primary font-bold text-xl">£2,999</span>
+                            <button onclick="openModal('maldives')" class="bg-secondary hover:bg-blue-900 text-white px-4 py-2 rounded-lg transition duration-300">
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+           
+                <!-- Package 1 -->
+                <div class="package-card bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?ixlib=rb-4.0.3" alt="Bali, Indonesia" class="w-full h-64 object-cover">
+                        <div class="absolute top-4 right-4 bg-primary text-white px-3 py-1 rounded-full text-sm font-medium">7 Days</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-secondary mb-2">Bali Bliss Retreat</h3>
+                        <p class="text-gray-600 mb-4">Experience the magic of Bali with our luxury wellness retreat package</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-primary font-bold text-xl">£1,299</span>
+                            <button onclick="openModal('bali')" class="bg-secondary hover:bg-blue-900 text-white px-4 py-2 rounded-lg transition duration-300">
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Package 2 -->
+                <div class="package-card bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?ixlib=rb-4.0.3" alt="Santorini, Greece" class="w-full h-64 object-cover">
+                        <div class="absolute top-4 right-4 bg-primary text-white px-3 py-1 rounded-full text-sm font-medium">5 Days</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-secondary mb-2">Santorini Sunset Escape</h3>
+                        <p class="text-gray-600 mb-4">Romantic getaway to the iconic white-washed villages of Santorini</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-primary font-bold text-xl">£1,599</span>
+                            <button onclick="openModal('santorini')" class="bg-secondary hover:bg-blue-900 text-white px-4 py-2 rounded-lg transition duration-300">
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Package 3 -->
+                <div class="package-card bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1578932750355-5eb30ece487a?ixlib=rb-4.0.3" alt="Maldives" class="w-full h-64 object-cover">
+                        <div class="absolute top-4 right-4 bg-primary text-white px-3 py-1 rounded-full text-sm font-medium">10 Days</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-secondary mb-2">Maldives Paradise</h3>
+                        <p class="text-gray-600 mb-4">Ultimate luxury in overwater bungalows with crystal clear waters</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-primary font-bold text-xl">£2,999</span>
+                            <button onclick="openModal('maldives')" class="bg-secondary hover:bg-blue-900 text-white px-4 py-2 rounded-lg transition duration-300">
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#" class="inline-block bg-secondary hover:bg-blue-900 text-white font-bold py-3 px-8 rounded-full transition duration-300">
+                    View All Packages <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const searchButton = document.querySelector(".hero-bg button");
+    const destinationSelect = document.querySelector(".hero-bg select");
+    const packages = document.querySelectorAll(".package-card");
+
+    searchButton.addEventListener("click", function () {
+        const selectedDestination = destinationSelect.value.toLowerCase().trim();
+
+        if (!selectedDestination) {
+            alert("Please select a destination.");
+            return;
+        }
+
+        // Scroll to package section
+        const toursSection = document.getElementById("toursworldwide");
+        toursSection.scrollIntoView({ behavior: "smooth" });
+
+        // Highlight matching package(s) temporarily
+        packages.forEach(card => {
+            const title = card.querySelector("h3").innerText.toLowerCase();
+            if (title.includes(selectedDestination)) {
+                card.classList.add("ring-4", "ring-primary", "scale-105", "transition", "duration-500");
+                // Remove highlight after 4 seconds
+                setTimeout(() => {
+                    card.classList.remove("ring-4", "ring-primary", "scale-105");
+                }, 4000);
+            }
+        });
+    });
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+<br><br><br>
+<br>
+<!-- TOURS TO UK -->
+    <section class="tourstouk" id="tourstouk">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-secondary mb-4">TOURS TO UK</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Our tours to UK</p>
+            </div>
+            
+            <div class="relative">
+                <div class="overflow-x-auto pb-6">
+                    <div class="flex space-x-6">
+                        <!-- Itinerary 1 -->
+                        <div class="package-card flex-none w-80 bg-white rounded-xl shadow-md overflow-hidden">
+                            <div class="relative">
+                                <img src="https://images.unsplash.com/photo-1527631746610-bca00a040d60?ixlib=rb-4.0.3" alt="Amalfi Coast" class="w-full h-48 object-cover">
+                                <div class="absolute top-4 right-4 bg-primary text-white px-3 py-1 rounded-full text-sm font-medium">8 Days</div>
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold text-secondary mb-2">Amalfi Coast Explorer</h3>
+                                <p class="text-gray-600 mb-4">Discover the stunning coastline of Italy with this comprehensive tour</p>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-primary font-bold text-xl">£1,899</span>
+                                    <button onclick="openModal('amalfi')" class="bg-secondary hover:bg-blue-900 text-white px-4 py-2 rounded-lg transition duration-300">
+                                        View Details
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Itinerary 2 -->
+                        <div class="package-card flex-none w-80 bg-white rounded-xl shadow-md overflow-hidden">
+                            <div class="relative">
+                                <img src="https://images.unsplash.com/photo-1527631746610-bca00a040d60?ixlib=rb-4.0.3" alt="Swiss Alps" class="w-full h-48 object-cover">
+                                <div class="absolute top-4 right-4 bg-primary text-white px-3 py-1 rounded-full text-sm font-medium">6 Days</div>
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold text-secondary mb-2">Swiss Alps Adventure</h3>
+                                <p class="text-gray-600 mb-4">Mountain retreat with hiking, skiing, and luxury accommodations</p>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-primary font-bold text-xl">£2,199</span>
+                                    <button onclick="openModal('swiss')" class="bg-secondary hover:bg-blue-900 text-white px-4 py-2 rounded-lg transition duration-300">
+                                        View Details
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Itinerary 3 -->
+                        <div class="package-card flex-none w-80 bg-white rounded-xl shadow-md overflow-hidden">
+                            <div class="relative">
+                                <img src="https://images.unsplash.com/photo-1527631746610-bca00a040d60?ixlib=rb-4.0.3" alt="Dubai" class="w-full h-48 object-cover">
+                                <div class="absolute top-4 right-4 bg-primary text-white px-3 py-1 rounded-full text-sm font-medium">5 Days</div>
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold text-secondary mb-2">Dubai Luxury Escape</h3>
+                                <p class="text-gray-600 mb-4">Experience the opulence of Dubai with this exclusive package</p>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-primary font-bold text-xl">£1,799</span>
+                                    <button onclick="openModal('dubai')" class="bg-secondary hover:bg-blue-900 text-white px-4 py-2 rounded-lg transition duration-300">
+                                        View Details
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Itinerary 3 -->
+                        <div class="package-card flex-none w-80 bg-white rounded-xl shadow-md overflow-hidden">
+                            <div class="relative">
+                                <img src="https://images.unsplash.com/photo-1527631746610-bca00a040d60?ixlib=rb-4.0.3" alt="Dubai" class="w-full h-48 object-cover">
+                                <div class="absolute top-4 right-4 bg-primary text-white px-3 py-1 rounded-full text-sm font-medium">5 Days</div>
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold text-secondary mb-2">Dubai Luxury Escape</h3>
+                                <p class="text-gray-600 mb-4">Experience the opulence of Dubai with this exclusive package</p>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-primary font-bold text-xl">£1,799</span>
+                                    <button onclick="openModal('dubai')" class="bg-secondary hover:bg-blue-900 text-white px-4 py-2 rounded-lg transition duration-300">
+                                        View Details
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Itinerary 4 -->
+                        <div class="package-card flex-none w-80 bg-white rounded-xl shadow-md overflow-hidden">
+                            <div class="relative">
+                                <img src="https://images.unsplash.com/photo-1527631746610-bca00a040d60?ixlib=rb-4.0.3" alt="Barcelona" class="w-full h-48 object-cover">
+                                <div class="absolute top-4 right-4 bg-primary text-white px-3 py-1 rounded-full text-sm font-medium">4 Days</div>
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold text-secondary mb-2">Barcelona City Break</h3>
+                                <p class="text-gray-600 mb-4">Cultural immersion in one of Europe's most vibrant cities</p>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-primary font-bold text-xl">£999</span>
+                                    <button onclick="openModal('barcelona')" class="bg-secondary hover:bg-blue-900 text-white px-4 py-2 rounded-lg transition duration-300">
+                                        View Details
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+             
+            </div>
+            
+           
+        </div>
+    </section>
+
+<br><br><br>
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Why Choose Us -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-secondary mb-4">Why Choose AmberFly Travel</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">We go beyond the ordinary to create extraordinary travel experiences</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center p-6 rounded-xl bg-light">
+                    <div class="w-16 h-16 bg-primary text-white rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-globe-americas text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-secondary mb-2">Local Expertise</h3>
+                    <p class="text-gray-600">Our team has firsthand knowledge of every destination we offer, ensuring authentic experiences.</p>
+                </div>
+                
+                <div class="text-center p-6 rounded-xl bg-light">
+                    <div class="w-16 h-16 bg-primary text-white rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-hand-holding-heart text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-secondary mb-2">Personalized Service</h3>
+                    <p class="text-gray-600">We tailor every aspect of your trip to match your preferences and travel style.</p>
+                </div>
+                
+                <div class="text-center p-6 rounded-xl bg-light">
+                    <div class="w-16 h-16 bg-primary text-white rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-shield-alt text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-secondary mb-2">Peace of Mind</h3>
+                    <p class="text-gray-600">24/7 support and comprehensive travel protection for worry-free journeys.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <style>
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        .accordion-content.active {
+            max-height: 500px;
+            transition: max-height 0.5s ease-in;
+        }
+        .gallery-item {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .gallery-item:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        .instagram-item {
+            position: relative;
+            overflow: hidden;
+        }
+        .instagram-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .instagram-item:hover::before {
+            opacity: 1;
+        }
+        .instagram-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 2rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .instagram-item:hover .instagram-icon {
+            opacity: 1;
+        }
+    </style>
+
+    <!-- Travel Blog Highlights Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <span class="text-amber-600 font-semibold">LATEST STORIES</span>
+                <h2 class="text-4xl font-bold mt-2 mb-4">Travel Blog Highlights</h2>
+                <p class="max-w-2xl mx-auto text-gray-600">Discover inspiring travel stories and expert tips from our luxury travel specialists.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Blog Post 1 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg transition-transform duration-300 hover:-translate-y-2">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                             alt="Santorini Sunset" class="w-full h-full object-cover">
+                        <div class="absolute bottom-0 left-0 bg-amber-600 text-white px-4 py-1 text-sm font-medium">
+                            June 15, 2023
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">The Ultimate Guide to Santorini's Hidden Gems</h3>
+                        <p class="text-gray-600 mb-4">Explore beyond the iconic blue domes to discover Santorini's best-kept secrets, from private volcanic hot springs to cliffside vineyards.</p>
+                        <a href="#" class="text-amber-600 font-semibold hover:text-amber-700 transition-colors">Read More →</a>
+                    </div>
+                </div>
+                
+                <!-- Blog Post 2 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg transition-transform duration-300 hover:-translate-y-2">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1530&q=80" 
+                             alt="Safari Adventure" class="w-full h-full object-cover">
+                        <div class="absolute bottom-0 left-0 bg-amber-600 text-white px-4 py-1 text-sm font-medium">
+                            May 28, 2023
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Luxury Safari: Where to Stay in the Serengeti</h3>
+                        <p class="text-gray-600 mb-4">Our top picks for the most exclusive safari lodges that combine five-star comfort with unparalleled wildlife experiences.</p>
+                        <a href="#" class="text-amber-600 font-semibold hover:text-amber-700 transition-colors">Read More →</a>
+                    </div>
+                </div>
+                
+                <!-- Blog Post 3 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg transition-transform duration-300 hover:-translate-y-2">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="https://images.unsplash.com/photo-1533107862482-0e6974b06ec4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                             alt="Japanese Culture" class="w-full h-full object-cover">
+                        <div class="absolute bottom-0 left-0 bg-amber-600 text-white px-4 py-1 text-sm font-medium">
+                            April 12, 2023
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Cultural Immersion: Japan Beyond Tokyo</h3>
+                        <p class="text-gray-600 mb-4">From Kyoto's tea ceremonies to the artisan villages of Kanazawa, experience Japan's rich traditions in authentic luxury.</p>
+                        <a href="#" class="text-amber-600 font-semibold hover:text-amber-700 transition-colors">Read More →</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#" class="inline-block bg-amber-600 hover:bg-amber-700 text-white font-semibold px-6 py-3 rounded-lg transition-colors">
+                    View All Blog Posts
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <span class="text-amber-600 font-semibold">OUR PORTFOLIO</span>
+                <h2 class="text-4xl font-bold mt-2 mb-4">Destination Gallery</h2>
+                <p class="max-w-2xl mx-auto text-gray-600">A visual journey through the breathtaking destinations we specialize in.</p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="gallery-item rounded-lg overflow-hidden h-48 md:h-64">
+                    <img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                         alt="Maldives" class="w-full h-full object-cover">
+                </div>
+                <div class="gallery-item rounded-lg overflow-hidden h-48 md:h-64">
+                    <img src="https://images.unsplash.com/photo-1533107862482-0e6974b06ec4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                         alt="Japan" class="w-full h-full object-cover">
+                </div>
+                <div class="gallery-item rounded-lg overflow-hidden h-48 md:h-64">
+                    <img src="https://images.unsplash.com/photo-1501594907352-04cda38ebc29?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80" 
+                         alt="Venice" class="w-full h-full object-cover">
+                </div>
+                <div class="gallery-item rounded-lg overflow-hidden h-48 md:h-64">
+                    <img src="https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1530&q=80" 
+                         alt="Safari" class="w-full h-full object-cover">
+                </div>
+                <div class="gallery-item rounded-lg overflow-hidden h-48 md:h-64">
+                    <img src="https://images.unsplash.com/photo-1506929562872-bb421503ef21?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1568&q=80" 
+                         alt="Sahara" class="w-full h-full object-cover">
+                </div>
+                <div class="gallery-item rounded-lg overflow-hidden h-48 md:h-64">
+                    <img src="https://images.unsplash.com/photo-1508672019048-805c876b67e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1519&q=80" 
+                         alt="Tropical" class="w-full h-full object-cover">
+                </div>
+                <div class="gallery-item rounded-lg overflow-hidden h-48 md:h-64">
+                    <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                         alt="Santorini" class="w-full h-full object-cover">
+                </div>
+                <div class="gallery-item rounded-lg overflow-hidden h-48 md:h-64">
+                    <img src="https://images.unsplash.com/photo-1518391846015-55a9cc003b25?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                         alt="Mountain" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Introduction Section -->
+    <section class="py-16 bg-orange text-orange relative">
+        <div class="absolute inset-0 bg-white"></div>
+        <div class="container mx-auto px-4 relative z-10">
+          
+                
+                <div class="text-center">
+                    <span class="text-amber-400 font-semibold">OUR STORY</span>
+                    <h2 class="text-3xl md:text-4xl font-bold mt-2 mb-4">Experience AmberFly Travel</h2>
+<br><br>
+
+  <div class="max-w-4xl mx-auto">
+                <div class="video-container rounded-xl overflow-hidden shadow-2xl mb-8">
+                    <iframe src="https://www.youtube.com/embed/BHACKCNDMW8?autoplay=0&showinfo=0&controls=1" frameborder="0" allowfullscreen></iframe>
+                </div>
+
+
+
+
+
+
+                    <p class="text-black-300 max-w-2xl mx-auto mb-8">
+                        Discover what sets us apart in crafting bespoke luxury travel experiences that create lifelong memories.
+                    </p>
+                    <a href="#" class="inline-block bg-amber-600 hover:bg-amber-700 text-white font-semibold px-6 py-3 rounded-lg transition-colors">
+                        Contact Our Specialists
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <span class="text-amber-600 font-semibold">MEET THE TEAM</span>
+                <h2 class="text-4xl font-bold mt-2 mb-4">Our Travel Specialists</h2>
+                <p class="max-w-2xl mx-auto text-gray-600">
+                    A team of passionate travel experts dedicated to crafting your perfect journey.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Team Member 1 -->
+                <div class="text-center">
+                    <div class="rounded-full overflow-hidden w-48 h-48 mx-auto mb-4 shadow-lg">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" 
+                             alt="Sarah Johnson" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-xl font-bold">Sarah Johnson</h3>
+                    <p class="text-amber-600 font-medium mb-2">Founder & CEO</p>
+                    <p class="text-gray-600">
+                        With over 20 years in luxury travel, Sarah ensures every AmberFly experience exceeds expectations.
+                    </p>
+                    <div class="flex justify-center space-x-3 mt-4">
+                       
+                    </div>
+                </div>
+                
+                <!-- Team Member 2 -->
+                <div class="text-center">
+                    <div class="rounded-full overflow-hidden w-48 h-48 mx-auto mb-4 shadow-lg">
+                        <img src="https://youngleaderssummit.org/wp-content/uploads/2024/01/Michael-Chen-Headshot-Michael-Chen-e1705425786691.jpg" 
+                             alt="Michael Chen" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-xl font-bold">Michael Chen</h3>
+                    <p class="text-amber-600 font-medium mb-2">Head of Operations</p>
+                    <p class="text-gray-600">
+                        Michael's meticulous attention to detail ensures flawless execution of every itinerary.
+                    </p>
+                    <div class="flex justify-center space-x-3 mt-4">
+                      
+                    </div>
+                </div>
+                
+                <!-- Team Member 3 -->
+                <div class="text-center">
+                    <div class="rounded-full overflow-hidden w-48 h-48 mx-auto mb-4 shadow-lg">
+                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=761&q=80" 
+                             alt="Emma Wilson" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-xl font-bold">Emma Wilson</h3>
+                    <p class="text-amber-600 font-medium mb-2">Luxury Travel Designer</p>
+                    <p class="text-gray-600">
+                        Emma's insider knowledge of European destinations creates truly bespoke experiences.
+                    </p>
+                    <div class="flex justify-center space-x-3 mt-4">
+                       
+                    </div>
+                </div>
+                
+                <!-- Team Member 4 -->
+                <div class="text-center">
+                    <div class="rounded-full overflow-hidden w-48 h-48 mx-auto mb-4 shadow-lg">
+                        <img src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                             alt="David Okoro" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-xl font-bold">David Okoro</h3>
+                    <p class="text-amber-600 font-medium mb-2">Adventure Specialist</p>
+                    <p class="text-gray-600">
+                        David crafts unforgettable adventure itineraries from African safaris to Antarctic expeditions.
+                    </p>
+                    <div class="flex justify-center space-x-3 mt-4">
+                      
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Awards & Certifications Section -->
+    <section class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <span class="text-amber-600 font-semibold">RECOGNITION</span>
+                <h2 class="text-4xl font-bold mt-2 mb-4">Awards & Certifications</h2>
+                <p class="max-w-2xl mx-auto text-gray-600">
+                    Our commitment to excellence has been recognized by the most prestigious organizations in luxury travel.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 items-center">
+                <div class="text-center p-4">
+                    <div class="bg-white rounded-full w-32 h-32 mx-auto flex items-center justify-center shadow-md mb-4">
+                        <i class="fas fa-award text-4xl text-amber-600"></i>
+                    </div>
+                    <h3 class="font-bold">Luxury Travel Awards</h3>
+                    <p class="text-sm text-gray-600">Best Luxury Travel Agency UK 2022</p>
+                </div>
+                
+                <div class="text-center p-4">
+                    <div class="bg-white rounded-full w-32 h-32 mx-auto flex items-center justify-center shadow-md mb-4">
+                        <i class="fas fa-star text-4xl text-amber-600"></i>
+                    </div>
+                    <h3 class="font-bold">Condé Nast</h3>
+                    <p class="text-sm text-gray-600">Top Travel Specialist 2021-2023</p>
+                </div>
+                
+                <div class="text-center p-4">
+                    <div class="bg-white rounded-full w-32 h-32 mx-auto flex items-center justify-center shadow-md mb-4">
+                        <i class="fas fa-shield-alt text-4xl text-amber-600"></i>
+                    </div>
+                    <h3 class="font-bold">ATOL Protected</h3>
+                    <p class="text-sm text-gray-600">Licensed & Protected Travel</p>
+                </div>
+                
+                <div class="text-center p-4">
+                    <div class="bg-white rounded-full w-32 h-32 mx-auto flex items-center justify-center shadow-md mb-4">
+                        <i class="fas fa-globe text-4xl text-amber-600"></i>
+                    </div>
+                    <h3 class="font-bold">Sustainable Travel</h3>
+                    <p class="text-sm text-gray-600">Eco-Certified Agency</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   
+
+    <!-- Instagram Feed Section -->
+    <section class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <span class="text-amber-600 font-semibold">FOLLOW US</span>
+                <h2 class="text-4xl font-bold mt-2 mb-4">@AmberFlyTravel</h2>
+                <p class="max-w-2xl mx-auto text-gray-600">
+                    Follow our Instagram for daily travel inspiration and exclusive offers.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2">
+                <div class="instagram-item rounded-lg overflow-hidden h-48 relative">
+                    <img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                         alt="Instagram Post" class="w-full h-full object-cover">
+                    <div class="instagram-icon">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                </div>
+                <div class="instagram-item rounded-lg overflow-hidden h-48 relative">
+                    <img src="https://images.unsplash.com/photo-1506929562872-bb421503ef21?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1568&q=80" 
+                         alt="Instagram Post" class="w-full h-full object-cover">
+                    <div class="instagram-icon">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                </div>
+                <div class="instagram-item rounded-lg overflow-hidden h-48 relative">
+                    <img src="https://images.unsplash.com/photo-1501594907352-04cda38ebc29?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80" 
+                         alt="Instagram Post" class="w-full h-full object-cover">
+                    <div class="instagram-icon">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                </div>
+                <div class="instagram-item rounded-lg overflow-hidden h-48 relative">
+                    <img src="https://images.unsplash.com/photo-1508672019048-805c876b67e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1519&q=80" 
+                         alt="Instagram Post" class="w-full h-full object-cover">
+                    <div class="instagram-icon">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                </div>
+                <div class="instagram-item rounded-lg overflow-hidden h-48 relative">
+                    <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                         alt="Instagram Post" class="w-full h-full object-cover">
+                    <div class="instagram-icon">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                </div>
+                <div class="instagram-item rounded-lg overflow-hidden h-48 relative">
+                    <img src="https://images.unsplash.com/photo-1518391846015-55a9cc003b25?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                         alt="Instagram Post" class="w-full h-full object-cover">
+                    <div class="instagram-icon">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#" class="inline-flex items-center text-amber-600 font-semibold hover:text-amber-700 transition-colors">
+                    <i class="fab fa-instagram mr-2"></i> Follow Us on Instagram
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <script>
+        // Accordion functionality
+        document.querySelectorAll('.accordion-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                const accordionContent = button.nextElementSibling;
+                const plusIcon = button.querySelector('i');
+                
+                button.classList.toggle('active');
+                accordionContent.classList.toggle('active');
+                
+                if (accordionContent.classList.contains('active')) {
+                    plusIcon.classList.remove('fa-plus');
+                    plusIcon.classList.add('fa-minus');
+                } else {
+                    plusIcon.classList.remove('fa-minus');
+                    plusIcon.classList.add('fa-plus');
+                }
+            });
+        });
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Testimonials -->
+    <section class="py-16 bg-primary bg-opacity-10">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-secondary mb-4">What Our Clients Say</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Don't just take our word for it - hear from our satisfied travelers</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-xl shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="text-yellow-400 text-xl">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-6">"AmberFly Travel planned our honeymoon to Bali and it was absolutely perfect. Every detail was taken care of, from airport transfers to private tours. We'll definitely use them for all our future trips!"</p>
+                    <div class="flex items-center">
+                        <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Sarah Johnson" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold text-secondary">Sarah Johnson</h4>
+                            <p class="text-gray-500 text-sm">Honeymoon in Bali</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-8 rounded-xl shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="text-yellow-400 text-xl">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-6">"The Santorini package exceeded all expectations. The boutique hotel they recommended had the most breathtaking views. Their local restaurant tips were spot on - we ate like kings!"</p>
+                    <div class="flex items-center">
+                        <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Michael Chen" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold text-secondary">Michael Chen</h4>
+                            <p class="text-gray-500 text-sm">Santorini Getaway</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-8 rounded-xl shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="text-yellow-400 text-xl">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-6">"As a family of five, we needed a vacation that worked for everyone. AmberFly created a perfect Maldives itinerary with activities for both kids and adults. The private island experience was unforgettable."</p>
+                    <div class="flex items-center">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Priya Patel" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold text-secondary">Priya Patel</h4>
+                            <p class="text-gray-500 text-sm">Family Maldives Trip</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <!-- FAQ Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <span class="text-amber-600 font-semibold">HAVE QUESTIONS?</span>
+                <h2 class="text-4xl font-bold mt-2 mb-4">Frequently Asked Questions</h2>
+                <p class="max-w-2xl mx-auto text-gray-600">
+                    Find answers to common queries about our luxury travel services.
+                </p>
+            </div>
+            
+            <div class="max-w-3xl mx-auto">
+                <!-- FAQ Item 1 -->
+                <div class="mb-4 border-b border-gray-200 pb-4">
+                    <button class="flex justify-between items-center w-full text-left font-semibold text-lg focus:outline-none accordion-btn">
+                        <span>How far in advance should I book a luxury trip?</span>
+                        <i class="fas fa-plus text-amber-600 transition-transform duration-300"></i>
+                    </button>
+                    <div class="accordion-content mt-2 text-gray-600">
+                        <p>For peak seasons and popular destinations, we recommend booking 9-12 months in advance to secure the best accommodations and experiences. For last-minute luxury travel, we often have access to exclusive inventory, so it's always worth inquiring.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 2 -->
+                <div class="mb-4 border-b border-gray-200 pb-4">
+                    <button class="flex justify-between items-center w-full text-left font-semibold text-lg focus:outline-none accordion-btn">
+                        <span>What's included in your service fee?</span>
+                        <i class="fas fa-plus text-amber-600 transition-transform duration-300"></i>
+                    </button>
+                    <div class="accordion-content mt-2 text-gray-600">
+                        <p>Our service fee covers comprehensive trip planning, 24/7 concierge support during your travels, exclusive access to amenities not available to the general public, and our expert recommendations based on firsthand knowledge. We handle all logistics so you can focus on enjoying your journey.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 3 -->
+                <div class="mb-4 border-b border-gray-200 pb-4">
+                    <button class="flex justify-between items-center w-full text-left font-semibold text-lg focus:outline-none accordion-btn">
+                        <span>Can you accommodate special requests?</span>
+                        <i class="fas fa-plus text-amber-600 transition-transform duration-300"></i>
+                    </button>
+                    <div class="accordion-content mt-2 text-gray-600">
+                        <p>Absolutely. From private yacht charters to after-hours museum visits, cooking classes with Michelin-starred chefs, or arranging surprise proposals, our network of contacts allows us to fulfill even the most unique requests that make your trip truly one-of-a-kind.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 4 -->
+                <div class="mb-4 border-b border-gray-200 pb-4">
+                    <button class="flex justify-between items-center w-full text-left font-semibold text-lg focus:outline-none accordion-btn">
+                        <span>What safety measures do you have in place?</span>
+                        <i class="fas fa-plus text-amber-600 transition-transform duration-300"></i>
+                    </button>
+                    <div class="accordion-content mt-2 text-gray-600">
+                        <p>We partner only with vetted suppliers who meet our stringent safety standards. All travelers receive 24/7 emergency support, and we monitor global situations to proactively adjust itineraries if needed. We also offer comprehensive travel insurance options for added peace of mind.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 5 -->
+                <div class="mb-4">
+                    <button class="flex justify-between items-center w-full text-left font-semibold text-lg focus:outline-none accordion-btn">
+                        <span>How do you handle cancellations?</span>
+                        <i class="fas fa-plus text-amber-600 transition-transform duration-300"></i>
+                    </button>
+                    <div class="accordion-content mt-2 text-gray-600">
+                        <p>Our cancellation policies vary by supplier but we always negotiate the most favorable terms for our clients. Many of our preferred partners offer flexible cancellation policies, especially when booked through AmberFly. We'll clearly explain all terms before confirming any reservations.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <p class="text-gray-600 mb-4">Still have questions? Our specialists are here to help.</p>
+                <a href="#" class="inline-block bg-amber-600 hover:bg-amber-700 text-white font-semibold px-6 py-3 rounded-lg transition-colors">
+                    Contact Us
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Contact Section -->
+    <section class="contactus" id="contactus">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-secondary mb-4">Contact Us</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Get in touch with our travel experts to start planning your dream vacation</p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div>
+                    <div class="bg-light rounded-xl p-8 h-full">
+                        <h3 class="text-2xl font-bold text-secondary mb-6">Send Us a Message</h3>
+                        <form class="space-y-4">
+                            <div>
+                                <label for="contact-name" class="block text-gray-600 mb-1">Full Name</label>
+                                <input type="text" id="contact-name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                            </div>
+                            <div>
+                                <label for="contact-email" class="block text-gray-600 mb-1">Email Address</label>
+                                <input type="email" id="contact-email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                            </div>
+                            <div>
+                                <label for="contact-phone" class="block text-gray-600 mb-1">Phone Number</label>
+                                <input type="tel" id="contact-phone" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                            </div>
+                            <div>
+                                <label for="contact-subject" class="block text-gray-600 mb-1">Subject</label>
+                                <select id="contact-subject" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                                    <option value="">Select a subject</option>
+                                    <option value="general">General Inquiry</option>
+                                    <option value="booking">Booking Assistance</option>
+                                    <option value="custom">Custom Itinerary</option>
+                                    <option value="group">Group Travel</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="contact-message" class="block text-gray-600 mb-1">Your Message</label>
+                                <textarea id="contact-message" rows="5" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-primary hover:bg-orange-600 text-white font-bold py-3 px-6 rounded-lg transition duration-300">
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="bg-light rounded-xl p-8 h-full">
+                        <h3 class="text-2xl font-bold text-secondary mb-6">Our Information</h3>
+                        
+                        <div class="mb-8">
+                            <h4 class="text-lg font-bold text-secondary mb-4">Visit Our Office</h4>
+                            <div class="flex items-start">
+                                <i class="fas fa-map-marker-alt text-primary mt-1 mr-4"></i>
+                                <p class="text-gray-600">126 Grove Road, Hounslow (behind Quality Foods), TW3, United Kingdom</p>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-8">
+                            <h4 class="text-lg font-bold text-secondary mb-4">Contact Details</h4>
+                            <div class="space-y-3">
+                                <div class="flex items-center">
+                                    <i class="fas fa-phone-alt text-primary mr-4"></i>
+                                    <a href="tel:+447545453460" class="text-gray-600 hover:text-primary transition duration-300">+44 7545 453460</a>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="fas fa-envelope text-primary mr-4"></i>
+                                    <a href="mailto:robin@amberfly.co.uk" class="text-gray-600 hover:text-primary transition duration-300">robin@amberfly.co.uk</a>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="fab fa-whatsapp text-primary mr-4"></i>
+                                    <a href="https://wa.me/447545453460" class="text-gray-600 hover:text-primary transition duration-300">Chat on WhatsApp</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-8">
+                            <h4 class="text-lg font-bold text-secondary mb-4">Opening Hours</h4>
+                            <ul class="space-y-2 text-gray-600">
+                                <li class="flex justify-between">
+                                    <span>Monday - Friday</span>
+                                    <span>9:00 AM - 6:00 PM</span>
+                                </li>
+                                <li class="flex justify-between">
+                                    <span>Saturday</span>
+                                    <span>10:00 AM - 4:00 PM</span>
+                                </li>
+                                <li class="flex justify-between">
+                                    <span>Sunday</span>
+                                    <span>Closed</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h4 class="text-lg font-bold text-secondary mb-4">Follow Us</h4>
+                            <div class="flex space-x-4">
+                                <a href="#" class="social-icon w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center hover:bg-blue-700">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a href="#" class="social-icon w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center hover:bg-pink-600">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="#" class="social-icon w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center hover:bg-blue-400">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="#" class="social-icon w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center hover:bg-blue-600">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <div class="bg-light">
+        <div class="container mx-auto px-4">
+            <div class="rounded-xl overflow-hidden shadow-md">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2484.324763845671!2d-0.3684664238433816!3d51.49288897180993!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4876726a9a1f3b1d%3A0x5106e0a0a4a5a0d8!2s126%20Grove%20Rd%2C%20Hounslow%20TW3%203SU%2C%20UK!5e0!3m2!1sen!2sus!4v1689876543210!5m2!1sen!2sus" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </div>
+<br><br><br>
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+    <!-- Newsletter -->
+    <section class="py-16 bg-secondary text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">Get Travel Inspiration</h2>
+            <p class="text-lg mb-8 max-w-2xl mx-auto">Subscribe to our newsletter for exclusive deals, travel tips, and destination highlights</p>
+            
+            <form class="max-w-md mx-auto">
+                <div class="flex flex-col sm:flex-row gap-2">
+                    <input type="email" placeholder="Your email address" class="flex-grow px-4 py-3 rounded-lg text-dark">
+                    <button type="submit" class="bg-primary hover:bg-orange-600 text-white font-bold py-3 px-6 rounded-lg transition duration-300">
+                        Subscribe
+                    </button>
+                </div>
+            </form>
+            
+            <p class="text-sm mt-4 opacity-70">We respect your privacy. Unsubscribe at any time.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white font-bold text-xl mr-2">AF</div>
+                        <span class="text-2xl font-bold">AmberFly <span class="text-primary">Travel</span></span>
+                    </div>
+                    <p class="text-gray-300 mb-4">Creating unforgettable travel experiences from Hounslow to the world.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-primary transition duration-300">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-primary transition duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-primary transition duration-300">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-primary transition duration-300">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-300 hover:text-primary transition duration-300">Home</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-primary transition duration-300">Hotels</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-primary transition duration-300">Flights</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-primary transition duration-300">About Us</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-primary transition duration-300">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Contact Us</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-primary mt-1 mr-3"></i>
+                            <span class="text-gray-300">126 Grove Road, Hounslow (behind Quality Foods), TW3, United Kingdom</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope text-primary mr-3"></i>
+                            <a href="mailto:robin@amberfly.co.uk" class="text-gray-300 hover:text-primary transition duration-300">robin@amberfly.co.uk</a>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fab fa-whatsapp text-primary mr-3"></i>
+                            <a href="https://wa.me/447545453460" class="text-gray-300 hover:text-primary transition duration-300">+44 7545 453460</a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Opening Hours</h3>
+                    <ul class="space-y-2 text-gray-300">
+                        <li class="flex justify-between">
+                            <span>Monday - Friday</span>
+                            <span>9:00 AM - 6:00 PM</span>
+                        </li>
+                        <li class="flex justify-between">
+                            <span>Saturday</span>
+                            <span>10:00 AM - 4:00 PM</span>
+                        </li>
+                        <li class="flex justify-between">
+                            <span>Sunday</span>
+                            <span>Closed</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2023 AmberFly Travel. All rights reserved. | <a href="#" class="hover:text-primary transition duration-300">Privacy Policy</a> | <a href="#" class="hover:text-primary transition duration-300">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Package Modal -->
+    <div id="packageModal" class="modal">
+        <div class="modal-content p-4 md:p-8">
+            <!-- Close button -->
+            <div class="flex justify-end mb-4">
+                <button onclick="closeModal()" class="text-gray-500 hover:text-dark text-2xl">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <!-- Modal content will be injected here by JavaScript -->
+            <div id="modalContent"></div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('open');
+        });
+        
+        // Package modal data
+        const packages = {
+            bali: {
+                title: "Bali Bliss Retreat",
+                price: "£1,299",
+                duration: "7 Days / 6 Nights",
+                images: [
+                    "https://images.unsplash.com/photo-1537996194471-e657df975ab4?ixlib=rb-4.0.3",
+                    "https://images.unsplash.com/photo-1518544866330-95bdd58116b7?ixlib=rb-4.0.3",
+                    "https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?ixlib=rb-4.0.3",
+                    "https://images.unsplash.com/photo-1518544866330-95bdd58116b7?ixlib=rb-4.0.3",
+                    "https://images.unsplash.com/photo-1551651648-7c0a63f71b8f?ixlib=rb-4.0.3"
+                ],
+                description: "Immerse yourself in the spiritual and natural beauty of Bali with our carefully curated wellness retreat package. This journey combines luxury accommodation, cultural experiences, and rejuvenating activities.",
+                itinerary: [
+                    "Day 1: Arrival in Denpasar, private transfer to Ubud resort",
+                    "Day 2: Morning yoga session, visit to Sacred Monkey Forest, Balinese cooking class",
+                    "Day 3: Sunrise hike at Mount Batur with breakfast, afternoon spa treatment",
+                    "Day 4: Temple tour (Besakih, Lempuyang), traditional dance performance",
+                    "Day 5: Free day for relaxation or optional activities (surfing, cycling, etc.)",
+                    "Day 6: Beach day at Nusa Dua with water sports",
+                    "Day 7: Departure transfer to airport"
+                ],
+                includes: [
+                    "6 nights in luxury boutique resort",
+                    "Daily breakfast and 3 dinners",
+                    "All transfers in private air-conditioned vehicle",
+                    "English-speaking guide for tours",
+                    "All entrance fees to attractions mentioned",
+                    "24/7 AmberFly support"
+                ]
+            },
+            santorini: {
+                title: "Santorini Sunset Escape",
+                price: "£1,599",
+                duration: "5 Days / 4 Nights",
+                images: [
+                    "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?ixlib=rb-4.0.3",
+                    "https://images.unsplash.com/photo-1533304452741-229d5c7fefab?ixlib=rb-4.0.3",
+                    "https://images.unsplash.com/photo-1503152394-c571994fd383?ixlib=rb-4.0.3",
+                    "https://images.unsplash.com/photo-1533304452741-229d5c7fefab?ixlib=rb-4.0.3",
+                    "https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?ixlib=rb-4.0.3"
+                ],
+                description: "Experience the magic of Santorini with this romantic getaway package. Stay in a traditional cave house with caldera views, explore charming villages, and witness the famous Santorini sunsets.",
+                itinerary: [
+                    "Day 1: Arrival in Santorini, private transfer to Oia cave house",
+                    "Day 2: Morning at leisure, sunset catamaran cruise with dinner",
+                    "Day 3: Island tour including Akrotiri ruins, Red Beach, and wine tasting",
+                    "Day 4: Fira exploration, cable car ride, shopping in local boutiques",
+                    "Day 5: Departure transfer to airport"
+                ],
+                includes: [
+                    "4 nights in luxury cave house with caldera view",
+                    "Daily breakfast",
+                    "Private airport transfers",
+                    "Sunset catamaran cruise with dinner",
+                    "Half-day island tour with wine tasting",
+                    "24/7 AmberFly support"
+                ]
+            },
+            maldives: {
+                title: "Maldives Paradise",
+                price: "£2,999",
+                duration: "10 Days / 9 Nights",
+                images: [
+                    "https://images.unsplash.com/photo-1578932750355-5eb30ece487a?ixlib=rb-4.0.3",
+                    "https://images.unsplash.com/photo-1582972236019-e3d10dae4a8e?ixlib=rb-4.0.3",
+                    "https://images.unsplash.com/photo-1581277900429-22fe9d0a8173?ixlib=rb-4.0.3",
+                    "https://images.unsplash.com/photo-1582972236019-e3d10dae4a8e?ixlib=rb-4.0.3",
+                    "https://images.unsplash.com/photo-1582972229331-b6d0a3b9a7a6?ixlib=rb-4.0.3"
+                ],
+                description: "Escape to paradise with our luxury Maldives package. Stay in an overwater bungalow with direct access to crystal clear waters, enjoy world-class diving, and experience ultimate relaxation.",
+                itinerary: [
+                    "Day 1: Arrival in Male, seaplane transfer to private island resort",
+                    "Days 2-4: At leisure to enjoy resort amenities (spa, water sports, diving)",
+                    "Day 5: Snorkeling excursion to local reef",
+                    "Days 6-8: At leisure or optional activities (sunset fishing, dolphin cruise)",
+                    "Day 9: Private sandbank picnic",
+                    "Day 10: Seaplane transfer to Male for departure"
+                ],
+                includes: [
+                    "9 nights in overwater bungalow",
+                    "All meals and selected beverages",
+                    "Return seaplane transfers",
+                    "Complimentary non-motorized water sports",
+                    "One snorkeling excursion",
+                    "Private sandbank picnic",
+                    "24/7 AmberFly support"
+                ]
+            }
+        };
+        
+        // Open modal function
+        function openModal(packageId) {
+            const package = packages[packageId];
+            const modal = document.getElementById('packageModal');
+            const modalContent = document.getElementById('modalContent');
+            
+            // Create image carousel
+            let carouselHtml = `
+                <div class="relative mb-8">
+                    <div class="image-carousel flex overflow-x-auto snap-mandatory snap-x rounded-xl mb-2" style="scrollbar-width: none;">
+            `;
+            
+            package.images.forEach((image, index) => {
+                carouselHtml += `
+                    <img src="${image}" alt="${package.title}" class="carousel-image w-full h-64 md:h-96 object-cover flex-none">
+                `;
+            });
+            
+            carouselHtml += `
+                    </div>
+                    <div class="flex justify-center space-x-2">
+                        ${package.images.map((_, index) => `
+                            <button onclick="scrollToImage(${index})" class="w-3 h-3 rounded-full bg-gray-300 hover:bg-primary transition duration-300"></button>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+            
+            // Create package details
+            let detailsHtml = `
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <div class="lg:col-span-2">
+                        <h2 class="text-3xl font-bold text-secondary mb-2">${package.title}</h2>
+                        <div class="flex items-center mb-6">
+                            <span class="text-primary font-bold text-2xl mr-4">${package.price}</span>
+                            <span class="bg-primary bg-opacity-20 text-primary px-3 py-1 rounded-full text-sm font-medium">${package.duration}</span>
+                        </div>
+                        
+                        <p class="text-gray-600 mb-6">${package.description}</p>
+                        
+                        <h3 class="text-xl font-bold text-secondary mb-4">Itinerary Highlights</h3>
+                        <ul class="mb-8 space-y-2">
+                            ${package.itinerary.map(item => `
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-accent mt-1 mr-3"></i>
+                                    <span class="text-gray-600">${item}</span>
+                                </li>
+                            `).join('')}
+                        </ul>
+                        
+                        <h3 class="text-xl font-bold text-secondary mb-4">Package Includes</h3>
+                        <ul class="mb-8 space-y-2">
+                            ${package.includes.map(item => `
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-accent mt-1 mr-3"></i>
+                                    <span class="text-gray-600">${item}</span>
+                                </li>
+                            `).join('')}
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-light p-6 rounded-xl">
+                        <h3 class="text-xl font-bold text-secondary mb-4">Enquire About This Package</h3>
+                        <form id="enquiryForm" class="space-y-4">
+                            <div>
+                                <label for="name" class="block text-gray-600 mb-1">Full Name</label>
+                                <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-gray-600 mb-1">Email Address</label>
+                                <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                            </div>
+                            <div>
+                                <label for="phone" class="block text-gray-600 mb-1">Phone Number</label>
+                                <input type="tel" id="phone" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                            </div>
+                            <div>
+                                <label for="message" class="block text-gray-600 mb-1">Your Message</label>
+                                <textarea id="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-primary hover:bg-orange-600 text-white font-bold py-3 px-6 rounded-lg transition duration-300">
+                                Send Enquiry
+                            </button>
+                        </form>
+                        
+                        <div class="mt-6 text-center">
+                            <p class="text-gray-600 mb-2">Prefer to call us?</p>
+                            <a href="tel:+447545453460" class="inline-flex items-center text-secondary font-bold">
+                                <i class="fas fa-phone-alt mr-2"></i> +44 7545 453460
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            // Combine and inject into modal
+            modalContent.innerHTML = carouselHtml + detailsHtml;
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+            
+            // Add form submission handler
+            document.getElementById('enquiryForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Thank you for your enquiry! We will contact you shortly.');
+                closeModal();
+            });
+        }
+        
+        // Close modal function
+        function closeModal() {
+            const modal = document.getElementById('packageModal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Scroll to specific image in carousel
+        function scrollToImage(index) {
+            const carousel = document.querySelector('.image-carousel');
+            const images = carousel.querySelectorAll('.carousel-image');
+            if (images[index]) {
+                images[index].scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'nearest',
+                    inline: 'start'
+                });
+            }
+        }
+        
+        // Close modal when clicking outside content
+        window.onclick = function(event) {
+            const modal = document.getElementById('packageModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>
