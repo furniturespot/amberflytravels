@@ -103,13 +103,37 @@
         }
     </style>
 </head>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <body class="bg-gray-50">
     <!-- Navigation -->
     <nav class="bg-white shadow-md sticky top-0 z-50">
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
             <div class="flex items-center">
-                <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white font-bold text-xl mr-2">AF</div>
-                <a href="#" class="text-2xl font-bold text-secondary">AmberFly <span class="text-primary">Travel</span></a>
+                
+            <a href="#" class="flex items-center space-x-2">
+  <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj6GIRU5kPeYKjS1cr_MoZGZP3rcAaUXIFvp9YCeh3t3T9miILmg-hl45CMxdK8QNuJ6i5WdeYUpPxRnYPBJaFUilsJeDCB3dtgLk1aAfdDrttl35bZeGuATWQ9YDyVLOH0fG2lOe8taZyUuud6rAKZrTQs45tRgJqoorhj0ZCdXqaARMoPFkvBzrNNmQ_G/s1495/1000118761.png" alt="Amberfly Logo" class="h-10 w-auto">
+</a>
+  
             </div>
             
             <div class="hidden md:flex space-x-8">
@@ -151,32 +175,56 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero-bg text-white py-20 md:py-32">
-        <div class="container mx-auto px-4 text-center">
-            <h1 class="text-4xl md:text-6xl font-bold mb-6">Discover Your Next Adventure</h1>
-            <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">Bespoke travel experiences crafted with care from Hounslow to the world</p>
-            
-            <div class="max-w-4xl mx-auto bg-white bg-opacity-20 backdrop-filter backdrop-blur-sm rounded-xl p-6">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <div class="relative">
-                        <select class="w-full p-3 rounded-lg bg-white bg-opacity-90 text-dark">
-                            <option value="">Destination</option>
-                            <option value="bali">Bali, Indonesia</option>
-                            <option value="santorini">Santorini, Greece</option>
-                            <option value="maldives">Maldives</option>
-                            <option value="paris">Paris, France</option>
-                        </select>
-                    </div>
-                    <div class="relative">
-                        <input type="date" class="w-full p-3 rounded-lg bg-white bg-opacity-90 text-dark">
-                    </div>
-                    <button class="bg-primary hover:bg-orange-600 text-white font-bold py-3 px-6 rounded-lg transition duration-300">
-                        Search Packages <i class="fas fa-search ml-2"></i>
-                    </button>
-                </div>
-            </div>
+ <section class="relative text-white py-20 md:py-32 overflow-hidden">
+  <!-- Background Slides -->
+  <div class="absolute inset-0 z-0">
+    <div class="absolute inset-0 bg-center bg-cover transition-opacity duration-1000 slide" style="background-image: url('https://images.unsplash.com/photo-1506929562872-bb421503ef21?auto=format&fit=crop&w=1600&q=80'); opacity: 1;"></div>
+    <div class="absolute inset-0 bg-center bg-cover transition-opacity duration-1000 slide" style="background-image: url('https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1530&q=80'); opacity: 0;"></div>
+    <div class="absolute inset-0 bg-center bg-cover transition-opacity duration-1000 slide" style="background-image: url('https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80'); opacity: 0;"></div>
+    <div class="absolute inset-0 bg-center bg-cover transition-opacity duration-1000 slide" style="background-image: url('https://images.unsplash.com/photo-1518391846015-55a9cc003b25?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80'); opacity: 0;"></div>
+    <div class="absolute inset-0 bg-center bg-cover transition-opacity duration-1000 slide" style="background-image: url('https://images.unsplash.com/photo-1519046904884-53103b34b206?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80'); opacity: 0;"></div>
+    <div class="absolute inset-0 bg-black opacity-50"></div>
+  </div>
+
+  <!-- Slide Left Button -->
+  <button onclick="prevSlide()" class="absolute left-4 top-1/2 z-10 transform -translate-y-1/2 bg-white/30 hover:bg-white/50 text-white rounded-full p-3 transition">
+    <i class="fas fa-chevron-left text-2xl"></i>
+  </button>
+
+  <!-- Slide Right Button -->
+  <button onclick="nextSlide()" class="absolute right-4 top-1/2 z-10 transform -translate-y-1/2 bg-white/30 hover:bg-white/50 text-white rounded-full p-3 transition">
+    <i class="fas fa-chevron-right text-2xl"></i>
+  </button>
+
+  <!-- Fixed Text Content -->
+  <div class="relative z-10 container mx-auto px-4 text-center">
+    <h1 class="text-4xl md:text-6xl font-bold mb-6">Discover Your Next Adventure</h1>
+    <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">Bespoke travel experiences crafted with care from Hounslow to the world</p>
+
+    <div class="max-w-4xl mx-auto bg-white bg-opacity-20 backdrop-filter backdrop-blur-sm rounded-xl p-6">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="relative">
+          <select class="w-full p-3 rounded-lg bg-white bg-opacity-90 text-dark">
+            <option value="">Destination</option>
+            <option value="bali">Bali, Indonesia</option>
+            <option value="santorini">Santorini, Greece</option>
+            <option value="maldives">Maldives</option>
+            <option value="paris">Paris, France</option>
+          </select>
         </div>
-    </section>
+        <div class="relative">
+          <input type="date" class="w-full p-3 rounded-lg bg-white bg-opacity-90 text-dark">
+        </div>
+        <button class="bg-primary hover:bg-orange-600 text-white font-bold py-3 px-6 rounded-lg transition duration-300">
+          Search Packages <i class="fas fa-search ml-2"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
 <br><br><br>
 
     <!-- TOURS WORLDWIDE-->
@@ -1695,5 +1743,57 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         }
     </script>
+
+
+
+
+
+
+
+
+
+
+<script>
+  window.onload = function () {
+    const slides = document.querySelectorAll('.slide');
+    let currentSlide = 0;
+
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.style.opacity = i === index ? '1' : '0';
+      });
+    }
+
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % slides.length;
+      showSlide(currentSlide);
+    }
+
+    function prevSlide() {
+      currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+      showSlide(currentSlide);
+    }
+
+    // Initial
+    showSlide(currentSlide);
+    setInterval(nextSlide, 5000);
+
+    // Make buttons global
+    window.nextSlide = nextSlide;
+    window.prevSlide = prevSlide;
+  };
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
 </body>
 </html>
